@@ -1,0 +1,10 @@
+name: dartling_category_links
+version: 0.0.1
+author: Dzenan Ridjanovic <dzenanr@gmail.com>
+description: This app uses dartling, a domain model framework, for its model and web components for views of the model.
+homepage: http://ondart.me/
+dependencies:
+  browser: any
+  web_ui: any
+  dartling:
+    git: git://github.com/dzenanr/dartling.git
