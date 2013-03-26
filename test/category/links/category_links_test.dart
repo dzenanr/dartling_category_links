@@ -39,14 +39,14 @@ testCategoryLinks(Repo repo, String domainCode, String modelCode) {
       var dartCategory = new Category(categoryConcept);
       expect(dartCategory, isNotNull);
       expect(dartCategory.links.length, equals(0));
-      dartCategory.code = 'Dart';
+      dartCategory.name = 'Dart';
       dartCategory.description = 'Dart Web language.';
       categories.add(dartCategory);
       expect(categories.length, equals(++categoryCount));
 
       var dartNewsLink = new Link(linkConcept);
       expect(dartNewsLink, isNotNull);
-      dartNewsLink.code = 'Dart News';
+      dartNewsLink.name = 'Dart News';
       dartNewsLink.url = Uri.parse('http://news.dartlang.org/');
       dartNewsLink.description =
           'Official news from the Dart project.';
@@ -56,7 +56,7 @@ testCategoryLinks(Repo repo, String domainCode, String modelCode) {
 
       var dartHomeLink = new Link(linkConcept);
       expect(dartHomeLink, isNotNull);
-      dartHomeLink.code = 'Dart Home';
+      dartHomeLink.name = 'Dart Home';
       dartHomeLink.url = Uri.parse('http://www.dartlang.org/');
       dartHomeLink.description =
           'Dart is a new web language with libraries and tools.';
@@ -67,7 +67,7 @@ testCategoryLinks(Repo repo, String domainCode, String modelCode) {
       var html5Category = new Category(categoryConcept);
       expect(html5Category, isNotNull);
       expect(html5Category.links.length, equals(0));
-      html5Category.code = 'HTML5';
+      html5Category.name = 'HTML5';
       html5Category.description =
           'HTML5 is the ubiquitous platform for the modern web.';
       categories.add(html5Category);
@@ -76,7 +76,7 @@ testCategoryLinks(Repo repo, String domainCode, String modelCode) {
       var css3Category = new Category(categoryConcept);
       expect(css3Category, isNotNull);
       expect(css3Category.links.length, equals(0));
-      css3Category.code = 'CSS3';
+      css3Category.name = 'CSS3';
       css3Category.description = 'Cascading Style Sheets for the modern web.';
       categories.add(css3Category);
       expect(categories.length, equals(++categoryCount));
@@ -87,51 +87,50 @@ testCategoryLinks(Repo repo, String domainCode, String modelCode) {
       categoryCount = 0;
       dartLinkCount = 0;
     });
-    test('Find category and link by code', () {
-      Category dartCategory = categories.findByCode('Dart');
+    test('Find category and link by name', () {
+      Category dartCategory = categories.findByAttributeId('name', 'Dart');
       expect(dartCategory, isNotNull);
-      expect(dartCategory.code, equals('Dart'));
+      expect(dartCategory.name, equals('Dart'));
 
       Links dartLinks = dartCategory.links;
       expect(dartLinks.length, equals(dartLinkCount));
-      Link dartHomeLink = dartLinks.findByCode('Dart Home');
+      Link dartHomeLink = dartLinks.findByAttribute('name', 'Dart Home');
       expect(dartHomeLink, isNotNull);
-      expect(dartHomeLink.code, equals('Dart Home'));
+      expect(dartHomeLink.name, equals('Dart Home'));
     });
-    test('Order categories by code', () {
+    test('Order categories by name', () {
       categories.order();
-      categories.display(title: 'Order categories by code');
+      categories.display(title: 'Order categories by name');
     });
-    test('Order Dart links by code', () {
-      Category dartCategory = categories.findByCode('Dart');
+    test('Order Dart links by name', () {
+      Category dartCategory = categories.findByAttributeId('name', 'Dart');
       expect(dartCategory, isNotNull);
       Links dartLinks = dartCategory.links;
       expect(dartLinks.length, equals(dartLinkCount));
       dartLinks.order();
-      dartLinks.display(title:'Ordered Dart links by code');
+      dartLinks.display(title:'Ordered Dart links by name');
     });
     test('New link with no category errors', () {
-      Category dartCategory = categories.findByCode('Dart');
+      Category dartCategory = categories.findByAttributeId('name', 'Dart');
       expect(dartCategory, isNotNull);
 
       var dartHomeLink = new Link(linkConcept);
       expect(dartHomeLink, isNotNull);
       expect(dartHomeLink.category, isNull);
-      dartHomeLink.code = 'Dart Home';
+      dartHomeLink.name = 'Dart Home';
       dartHomeLink.url = Uri.parse('http://www.dartlang.org/');
       dartHomeLink.description =
           'Dart brings structure to web app engineering '
           'with a new language, libraries, and tools.';
       dartCategory.links.add(dartHomeLink);
       expect(dartCategory.links.length, equals(dartLinkCount));
-      expect(dartCategory.links.errors.length, equals(2));
+      expect(dartCategory.links.errors.length, equals(1));
       expect(dartCategory.links.errors.toList()[0].category, equals('required'));
-      expect(dartCategory.links.errors.toList()[1].category, equals('unique'));
       dartCategory.links.errors.display(title:'Link Error');
     });
     test('Undo and redo actions', () {
       var frameworkCategory = new Category(categoryConcept);
-      frameworkCategory.code = 'Framework';
+      frameworkCategory.name = 'Framework';
       expect(frameworkCategory, isNotNull);
       expect(frameworkCategory.links.length, equals(0));
 

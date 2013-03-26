@@ -7,7 +7,7 @@ LinksEntries entries;
 Categories categories;
 
 load() {
-  String json = window.localStorage['category_links_with_dartling'];
+  String json = window.localStorage['dartling_entities'];
   if (json == null) {
     initCategoryLinks(entries);
   } else {
@@ -17,7 +17,7 @@ load() {
 }
 
 save() {
-  window.localStorage['category_links_with_dartling'] =
+  window.localStorage['dartling_entities'] =
       stringify(entries.toJson());
 }
 

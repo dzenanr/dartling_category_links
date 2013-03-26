@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Entity</title>
+    <link rel="components" href="entity_table.html">
+  </head>
+  <body>
+    <element name="entity-buffer" extends="span">
+      <template>
+        <div>
+          <br/>
+          <template iterate="attribute in entities.concept.attributes.toList()">
+            <label>{{ attribute.code }}</label>          
+            <input template if="entity == null" id="elementId" type="text" size="64" value=""/>
+            <input template if="entity != null" id="elementId" type="text" size="64" value="{{ entity.getAttribute(attribute.code) }}"/>
+            <!--
+            <input id="{{ entities.concept.code }}-{{ attribute.code }}" type="text" size="64" value="{{ entity.getAttribute(attribute.code) }}"/>
+            -->
+            <br/>
+          </template>
+          <button on-click="add()">add</button>
+          <button on-click="find()">find</button>
+          <button on-click="update()">update</button>
+          <button on-click="delete()">remove</button>
+          <button on-click="showChildren()">children</button>
+          <div id="entity-message"></div>
+        </div>
+        <div template if="showEntityChildren">
+          <div template iterate="neighbor in entities.concept.children.toList()">
+            <entity-table
+              entities="{{ entity.getChild(neighbor.code) }}"
+            >
+            </entity-table>
+          </div>
+        </div>
+      </template>
+      <script type="application/dart" src="entity_buffer.dart"></script>
+    </element>
+  </body>
+</html>
