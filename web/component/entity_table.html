@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8">
     <title>Entities</title>
-    <link rel="components" href="entity_buffer.html">
+    <link rel="import" href="entity_buffer.html">
   </head>
   <body>
     <element name="entity-table" extends="span">
@@ -27,7 +27,7 @@
         <div>
           <entity-buffer
             entities="{{ entities }}"
-            entity="{{ entities.findByAttribute('name', 'Dart') }}"
+            entity="{{ entities.firstWhereAttribute('name', 'Dart') }}"
           >
           </entity-buffer>
         </div>

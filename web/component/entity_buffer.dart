@@ -38,7 +38,7 @@ class EntityBuffer extends WebComponent {
       }
       if (entities.add(entity)) {
         message.text = 'added';
-        var entityTable = query('entity-table').xtag;
+        var entityTable = query('#entity-table').xtag;
         entityTable.entities.order();
       } else {
         message.text = 'entity already exists';
@@ -55,7 +55,7 @@ class EntityBuffer extends WebComponent {
     for (var attribute in entities.concept.attributes) {
       entity.setAttribute(attribute.code, av[attribute.code]);
     }
-    var entityTable = document.query('entity-table').xtag;
+    var entityTable = document.query('#entity-table').xtag;
     entityTable.showEntityEdit = false;
   }
   

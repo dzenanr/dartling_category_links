@@ -5,13 +5,13 @@ part of category_links;
 abstract class CategoryGen extends ConceptEntity<Category> { 
  
   CategoryGen(Concept concept) : super.of(concept) { 
-    Concept linkConcept = concept.model.concepts.findByCode("Link"); 
+    Concept linkConcept = concept.model.concepts.singleWhereCode("Link"); 
     setChild("links", new Links(linkConcept)); 
   } 
  
   CategoryGen.withId(Concept concept, String name) : super.of(concept) { 
     setAttribute("name", name); 
-    Concept linkConcept = concept.model.concepts.findByCode("Link"); 
+    Concept linkConcept = concept.model.concepts.singleWhereCode("Link"); 
     setChild("links", new Links(linkConcept)); 
   } 
  

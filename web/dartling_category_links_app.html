@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8">
     <title>dartling Category Links</title>
-    <link rel="components" href="component/entity_table.html">
+    <link rel="import" href="component/entity_table.html">
     <link rel="stylesheet" href="css/input.css"/>
     <link rel="stylesheet" href="css/link.css"/>
     <link rel="stylesheet" href="css/marker.css"/>
@@ -17,7 +17,7 @@
       <button on-click="save()">Save</button>
     </div>
 
-    <entity-table
+    <entity-table id="entity-table"
       entities="{{ categories }}">
     </entity-table>
 

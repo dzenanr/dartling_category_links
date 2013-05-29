@@ -88,30 +88,30 @@ testCategoryLinks(Repo repo, String domainCode, String modelCode) {
       dartLinkCount = 0;
     });
     test('Find category and link by name', () {
-      Category dartCategory = categories.findByAttributeId('name', 'Dart');
+      Category dartCategory = categories.singleWhereAttributeId('name', 'Dart');
       expect(dartCategory, isNotNull);
       expect(dartCategory.name, equals('Dart'));
 
       Links dartLinks = dartCategory.links;
       expect(dartLinks.length, equals(dartLinkCount));
-      Link dartHomeLink = dartLinks.findByAttribute('name', 'Dart Home');
+      Link dartHomeLink = dartLinks.firstWhereAttribute('name', 'Dart Home');
       expect(dartHomeLink, isNotNull);
       expect(dartHomeLink.name, equals('Dart Home'));
     });
-    test('Order categories by name', () {
-      categories.order();
+    test('Sort categories by name', () {
+      categories.sort();
       categories.display(title: 'Order categories by name');
     });
-    test('Order Dart links by name', () {
-      Category dartCategory = categories.findByAttributeId('name', 'Dart');
+    test('Sort Dart links by name', () {
+      Category dartCategory = categories.singleWhereAttributeId('name', 'Dart');
       expect(dartCategory, isNotNull);
       Links dartLinks = dartCategory.links;
       expect(dartLinks.length, equals(dartLinkCount));
-      dartLinks.order();
-      dartLinks.display(title:'Ordered Dart links by name');
+      dartLinks.sort();
+      dartLinks.display(title:'Sorted Dart links by name');
     });
     test('New link with no category errors', () {
-      Category dartCategory = categories.findByAttributeId('name', 'Dart');
+      Category dartCategory = categories.singleWhereAttributeId('name', 'Dart');
       expect(dartCategory, isNotNull);
 
       var dartHomeLink = new Link(linkConcept);

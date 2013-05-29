@@ -1,4 +1,5 @@
 .buildlog
+pubspec.lock
 packages
 web/out
 *.js
