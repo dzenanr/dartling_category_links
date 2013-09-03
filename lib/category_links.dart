@@ -35,10 +35,6 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 library category_links;
 
-import "dart:json";
-import "dart:math";
-import "dart:uri";
-
 import "package:dartling/dartling.dart";
 
 part "category/links/json/data.dart";

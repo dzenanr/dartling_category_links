@@ -9,7 +9,7 @@ class CategoryModels extends DomainModels {
   }
 
   LinksEntries fromJsonToLinksEntries() {
-    return new LinksEntries(fromMagicBoxes(
+    return new LinksEntries(fromJsonToModel(
       categoryLinksModelJson,
       domain,
       CategoryRepo.categoryLinksModelCode));

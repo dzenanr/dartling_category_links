@@ -6,7 +6,7 @@ homepage: http://ondart.me/
 dependencies:
   browser: any
   dartling:
-    path: C:\Users\ridjanod\git\dart\dartling
+    git: git://github.com/dzenanr/dartling.git
   dartling_default_app:
-    path: C:\Users\ridjanod\git\dart\dartling_default_app
+    git: git://github.com/dzenanr/dartling_default_app.git
   web_ui: any

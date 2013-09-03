@@ -1,7 +1,5 @@
 // test/category/links/category_links_test.dart
 
-import 'dart:uri';
-
 import "package:unittest/unittest.dart";
 import "package:dartling/dartling.dart";
 import "package:dartling_category_links/category_links.dart";
